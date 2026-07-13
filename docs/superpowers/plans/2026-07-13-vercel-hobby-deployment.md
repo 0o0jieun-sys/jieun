@@ -4,7 +4,7 @@
 
 **Goal:** 개인 연습용 Next.js 프로젝트를 GitHub 비공개 저장소에 올리고 Vercel Hobby와 연결해 `main` 브랜치 자동 배포를 완성한다.
 
-**Architecture:** 로컬 `C:\vibecoding\my-shop`을 Git 저장소의 루트로 사용하고 GitHub `0o0jieun-sys/my-shop`에 푸시한다. 현재 로컬에 연결 흔적이 있는 Vercel `my-shop` 프로젝트가 계정 `0o0jieun-7396`의 프로젝트인지 확인한 후 GitHub 저장소를 연결하며, 이후 모든 프로덕션 배포는 `main` 브랜치 푸시로 실행한다.
+**Architecture:** 로컬 `C:\vibecoding\my-shop`을 Git 저장소의 루트로 사용하고 현재 Codex 작업 브랜치를 GitHub `0o0jieun-sys/my-shop`의 원격 `main`으로 푸시한다. 현재 로컬에 연결 흔적이 있는 Vercel `my-shop` 프로젝트가 계정 `0o0jieun-7396`의 프로젝트인지 확인한 후 GitHub 저장소를 연결하며, 이후 모든 프로덕션 배포는 원격 `main` 브랜치 갱신으로 실행한다.
 
 **Tech Stack:** Next.js 16.2.10, React 19.2.4, Node.js 20.9 이상, npm, Git for Windows, Git Credential Manager 2.8.0, GitHub private repository, Vercel CLI 55.0.0, Vercel Hobby
 
@@ -109,7 +109,7 @@ Expected: `1 file changed`가 포함된 새 커밋이 생성된다.
 
 **Interfaces:**
 - Consumes: Task 1의 ignore 규칙과 `package-lock.json`
-- Produces: 로컬에서 검증된 `main` 브랜치 프로젝트 기준선
+- Produces: 로컬에서 검증된 현재 Codex 작업 브랜치의 프로젝트 기준선
 
 - [ ] **Step 1: 잠금 파일 기준으로 의존성 상태 확인**
 
@@ -184,7 +184,7 @@ Expected: 커밋이 생성되고 `git status --short` 출력이 비어 있다.
 - Test: remote URL, upstream branch, repository visibility
 
 **Interfaces:**
-- Consumes: Task 2의 검증된 `main` 브랜치
+- Consumes: Task 2의 검증된 현재 Codex 작업 브랜치
 - Produces: GitHub 비공개 원격 저장소와 추적 중인 `origin/main`
 
 - [ ] **Step 1: Git Credential Manager에 GitHub 계정이 등록되어 있는지 확인**
@@ -239,10 +239,10 @@ Expected: fetch와 push URL이 모두 `https://github.com/0o0jieun-sys/my-shop.g
 Run:
 
 ```powershell
-git push -u origin main
+git push -u origin HEAD:main
 ```
 
-Expected: `main -> main`이 표시되고 로컬 `main`이 `origin/main`을 추적한다.
+Expected: 현재 로컬 브랜치의 HEAD가 원격 `main`으로 푸시되고 현재 브랜치가 `origin/main`을 추적한다.
 
 - [ ] **Step 6: 로컬과 원격 동기화 상태 확인**
 
@@ -254,8 +254,10 @@ git status -sb
 
 Expected:
 
+Expected: 첫 줄에 현재 로컬 브랜치 이름과 `origin/main`이 함께 표시되고 ahead/behind 숫자가 없다. 현재 확인된 브랜치 이름을 유지하는 경우 출력은 다음과 같다.
+
 ```text
-## main...origin/main
+## codex/hanudam-site...origin/main
 ```
 
 ---
@@ -377,7 +379,7 @@ Expected: README 한 파일을 변경한 커밋이 생성된다.
 Run:
 
 ```powershell
-git push
+git push origin HEAD:main
 ```
 
 Expected: 새 커밋이 `origin/main`에 푸시되고 Vercel에서 새 배포가 시작된다.
@@ -417,7 +419,7 @@ git status -sb
 git log --oneline -5
 ```
 
-Expected: `main...origin/main`에 ahead/behind 표시가 없고 최근 커밋에 `docs: note Vercel practice deployment`가 포함된다.
+Expected: 현재 로컬 브랜치와 `origin/main` 사이에 ahead/behind 표시가 없고 최근 커밋에 `docs: note Vercel practice deployment`가 포함된다.
 
 ## Completion Criteria
 
