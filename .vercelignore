@@ -1,0 +1,10 @@
+.vercel
+초안/
+docs/
+tests/
+*.pen
+*.har
+*.pdf
+AGENTS.md
+CLAUDE.md
+DESIGN.md

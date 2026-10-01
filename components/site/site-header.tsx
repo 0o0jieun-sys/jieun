@@ -5,11 +5,10 @@ import type { SiteSettings } from "@/lib/site/types";
 import { cn } from "@/lib/utils";
 
 const navigation = [
-  { href: "/menu", label: "메뉴" },
-  { href: "/rooms", label: "개별룸" },
-  { href: "/reservation", label: "예약·단체문의" },
-  { href: "/location", label: "오시는 길" },
-  { href: "/news", label: "소식" },
+  { href: "/#menu", label: "메뉴" },
+  { href: "/#rooms", label: "개별룸" },
+  { href: "/#group-inquiry", label: "예약·단체문의" },
+  { href: "/#visit", label: "오시는 길" },
 ];
 
 export function SiteHeader({ settings }: { settings: SiteSettings }) {

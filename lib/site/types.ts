@@ -20,7 +20,7 @@ export type SiteSettings = {
 export type MenuItem = {
   slug: string;
   name: string;
-  cut: "안심" | "등심" | "안창살" | "기타";
+  cut: "안심" | "등심" | "살치살" | "안창살" | "기타";
   description: string;
   priceText: string;
   servingText: string;

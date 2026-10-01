@@ -35,10 +35,10 @@ export function SiteFooter({ settings }: { settings: SiteSettings }) {
             ) : null}
           </div>
           <nav aria-label="하단 메뉴" className="flex flex-col items-start gap-2">
-            <Link href="/menu" className="text-base hover:text-accent">메뉴</Link>
-            <Link href="/rooms" className="text-base hover:text-accent">개별룸</Link>
-            <Link href="/reservation" className="text-base hover:text-accent">예약·단체문의</Link>
-            <Link href="/location" className="text-base hover:text-accent">오시는 길</Link>
+            <Link href="/#menu" className="text-base hover:text-accent">메뉴</Link>
+            <Link href="/#rooms" className="text-base hover:text-accent">개별룸</Link>
+            <Link href="/#group-inquiry" className="text-base hover:text-accent">예약·단체문의</Link>
+            <Link href="/#visit" className="text-base hover:text-accent">오시는 길</Link>
           </nav>
         </div>
       </div>
